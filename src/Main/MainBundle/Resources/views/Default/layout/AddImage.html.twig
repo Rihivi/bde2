@@ -1,0 +1,13 @@
+{% extends "::layout/layout.html.twig" %}
+{% block body %}
+
+
+    <div class="divIdee col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <form action="{{ path("website_AddImage", {'id' : evenement.id}) }}" method="post" enctype="multipart/form-data">
+            {{ form_widget(form) }}
+                <input type="submit">
+            {{ form_end(form) }}
+        </form>
+    </div>
+
+{% endblock %}

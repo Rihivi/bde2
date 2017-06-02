@@ -1,0 +1,39 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+    <div class="push"></div>
+
+    <div class="item">
+        <h2 id="Panier">Votre Panier</h2>
+        {% for panier in Panier %}
+        <section class=" col-xs-11 col-sm-8 col-md-8 col-lg-8 ">
+            <div class="col-xs-5 col-sm-2 col-md-2 col-lg-2">
+                 <img class="imgArticle" src="{{asset(panier.product.source)}}">
+            </div>
+
+            <div  class="  col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-xs-5 row col-sm-5 row col-md-5 row col-lg-5 row">
+                <h2> <a href="article.html">{{panier.product.Name}}</a></h2>
+                <p class="hidden-xs Description"> {{panier.product.description}}</p>
+            </div>
+
+            <div class=" col-xs-offset-0 col-sm-offset-6 col-md-offset-6 col-lg-offset-6 col-xs-12 col-sm-4 col-md-4 col-lg-4 ">
+                <p class="Prix">Prix : {{panier.product.price}}€</p> 
+                <p class="Quantité">Quantité : {{panier.product.quantity}}</p>
+                <button>Supprimer du panier</button>
+            </div>
+        </section>
+        {% endfor %}
+
+    </div>
+
+    <div style="position: fixed;" class=" hidden-xs col-sm-3 col-md-3 col-lg-3 Panier col-xs-offset-9 col-sm-offset-9 col-lg-offset-9 col-lg-offset-9 Panier">
+        <h3>Panier</h3>
+        <ul>
+        {% for panier in Panier %}
+            <li>{{panier.product.Name}}</li>
+        {% endfor %}
+        </ul>
+        <p class="TOTAL">TOTAL : {{ total }}€</p>
+        <p class="commande">Passer la commande</p>
+    </div>
+{% endblock %}

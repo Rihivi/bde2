@@ -1,0 +1,148 @@
+<?php
+
+namespace Main\MainBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Activity
+ *
+ * @ORM\Table(name="activity")
+ * @ORM\Entity(repositoryClass="Main\MainBundle\Repository\ActivityRepository")
+ */
+class Activity
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\OneToOne(targetEntity="User\UserBundle\Entity\User")
+     * @ORM\JoinColumn{nullable=false}
+     */
+    private $user;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Name", type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="DateActivity", type="datetime")
+     */
+    private $dateActivity;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="Price", type="float")
+     */
+    private $price;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Description", type="text")
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PictureSource", type="string", length=255)
+     */
+    private $pictureSource;
+
+//    /**
+//     * @ORM\ManyToMany(targetEntity="Main\MainBundle\Entity\Media", cascade={"persist","remove"})
+//     * @ORM\JoinColumn(nullable=false)
+//     */
+//    private $media;
+    /**
+     * @ORM\ManyToMany(targetEntity="Main\MainBundle\Entity\Media", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $media;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Main\MainBundle\Entity\Commentary", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $Commentary;
+
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->Commentary = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add commentary
+     *
+     * @param \Main\MainBundle\Entity\Commentary $commentary
+     *
+     * @return Activity
+     */
+    public function addCommentary(\Main\MainBundle\Entity\Commentary $commentary)
+    {
+        $this->Commentary[] = $commentary;
+
+        return $this;
+    }
+
+    /**
+     * Remove commentary
+     *
+     * @param \Main\MainBundle\Entity\Commentary $commentary
+     */
+    public function removeCommentary(\Main\MainBundle\Entity\Commentary $commentary)
+    {
+        $this->Commentary->removeElement($commentary);
+    }
+
+    /**
+     * Get commentary
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCommentary()
+    {
+        return $this->Commentary;
+    }
+
+    /**
+     * Add medium
+     *
+     * @param \Main\MainBundle\Entity\Media $medium
+     *
+     * @return Activity
+     */
+    public function addMedia(\Main\MainBundle\Entity\Media $medium)
+    {
+        $this->media[] = $medium;
+
+        return $this;
+    }
+
+    /**
+     * Remove medium
+     *
+     * @param \Main\MainBundle\Entity\Media $medium
+     */
+    public function removeMedia(\Main\MainBundle\Entity\Media $medium)
+    {
+        $this->media->removeElement($medium);
+    }
+}

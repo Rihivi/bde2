@@ -1,0 +1,73 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+
+    <h2 style="margin-bottom:3vw; text-align: center;" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">Proposez vos idées !</h2>
+
+
+    <div style=" width:100%;display: flex; align-items: center; justify-content: center; flex-direction: column;">
+    {% for proposition in propositions %}
+        {% set Like = proposition.LikeActivity %}
+
+
+
+
+
+        <section class="col-lg-4 ActionRealise">
+            <div class="pastAction">
+                {#<img  class ="pastActionImg" src="{{ asset(activity.media.path) }}">#}
+                <h4 class="TitreAction">{{ proposition.Title[:50] }}</h4>
+                {#<p class="DateAction">{{ action.dateDebut| date() }}</p>#}
+                <p class="DescriptionAction">{{ proposition.Description[:150] }}...</p>
+                <a href="{{ path('website_descriptionProposition', {'id' : proposition.id})}}"><p class="Titre LigneTitre LirePlusAction" style=" text-align: center; padding: 10px;">Lire plus</p></a>
+                    {#<p href="{{ path('website_descriptionProposition', {'id' : proposition.id})}}"class="Titre LigneTitre LirePlusAction" style="padding: 10px; text-align: center;"><span class="LigneSpan">Lire plus</span> </p>#}
+                </div>
+                {#<p>{{ action.dateFin| date() }}</p>#}
+                {#<p>{{ action.cout }}</p>#}
+                {#<p>{{ action.recolte }}</p>#}
+                {#<p>{{ action.type }}</p>#}
+        </section>
+
+
+
+
+    {#<div class="divIdee col-xs-6 col-sm-6 col-md-6 col-lg-6">#}
+        {#<div>#}
+            {#<h3>{{ proposition.Title }}</h3><br>#}
+            {#<p class="pIdee">{{ proposition.Description}}</p>#}
+        {#</div>#}
+        {#<div style="padding-top: 50px; height: 134px; width: 500px; margin-top: 50px;">#}
+            {#<div style="margin-left: 50px;">#}
+                {#<div>#}
+                    {#<button onclick="{% set Likes = Like+1 %}"><span>Like </span><i class="glyphicon glyphicon-thumbs-up"></i></button>#}
+                    {#{{ Like }}#}
+                {#</div>#}
+                {#<br>#}
+                {#<div>#}
+                    {#<span>Proposez une date :</span>#}
+                    {#<input type="date" name="date">#}
+                {#</div>#}
+                {#<br>#}
+                {#<div style="display: flex;">#}
+                    {#<input type="checkbox" name="matin">#}
+                    {#<span>Matin  </span>#}
+                    {#<input type="checkbox" name="aprem" style="margin-left: 0.5vw;">#}
+                    {#<span>Après-midi</span>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+    {#</div>#}
+    {% endfor %}
+    </div>
+
+    <div class="pushf"></div>
+    <h2 style="margin-left: 30vw;margin-top: 5vw;margin-bottom:3vw;" class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Proposez vos idées !</h2>
+    <div class="divIdee col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <form action="{{ path("website_propositions") }}" method="post">
+            {{ form_widget(form) }}
+            <input type="submit" style="height: 6vh; margin-top: 1vh;"></input>
+            {#{{ form_end(form) }}#}
+        </form>
+    </div>
+
+{% endblock %}

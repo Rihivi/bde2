@@ -1,0 +1,130 @@
+{% extends "::layout/layout.html.twig" %}
+{% block body %}
+    <div class="push"></div>
+    <!-- Contact -->
+    <div class="container white">
+        <div class="row">
+            <div class="container white">
+                <div class="col-lg-12">
+                    <div class="padder-t2">
+                        <h1>Contact</h1>
+                        <div class="horiz-divider"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row padder-t padder-b">
+            <div class="container white">
+                <div class="col-lg-12">
+                    <!-- Form -->
+                    <form class="form-horizontal" action="{{ path('contact') }}" method="post"  {{ form_enctype(form) }} id="contact_form">
+                        {{ form_start(form) }}
+                        <fieldset>
+                            <!-- Text input First name -->
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-4 col-lg-4">
+                                        <label class="control-label pull-right"><h4>{{ form_label(form.firstname) }}</h4></label>
+                                    </div>
+                                    <div class="col-md-4 col-lg-4 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                            <!-- twig: WIDGET -->
+                                            {{ form_widget(form.firstname) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Text input Last name -->
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-4 col-lg-4">
+                                        <label class="control-label pull-right" ><h4>{{ form_label(form.lastname) }}</h4></label>
+                                    </div>
+                                    <div class="col-md-4 col-lg-4 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                            <!-- twig: WIDGET -->
+                                            {{ form_widget(form.lastname) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Text input Email -->
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-4 col-lg-4">
+                                        <label class="control-label pull-right"><h4>{{ form_label(form.email) }}</h4></label>
+                                    </div>
+                                    <div class="col-md-4 col-lg-4 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                            <!-- twig: WIDGET -->
+                                            {{ form_widget(form.email) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-4 col-lg-4">
+                                        <label class="control-label pull-right"><h4>{{ form_label(form.phone) }}</h4></label>
+                                    </div>
+                                    <div class="col-md-4 col-lg-4 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                            {{ form_widget(form.phone) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Text area -->
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-4 col-lg-4">
+                                        <label class="control-label pull-right"><h4>{{ form_label(form.message) }}</h4></label>
+                                    </div>
+                                    <div class="col-md-4 col-lg-5 inputGroupContainer">
+                                        <div class="input-group">
+                                            {{ form_widget(form.message) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="col-md-4 col-lg-4 control-label"></label>
+                                    <div class="col-md-4 col-lg-4">
+                                        {{ form_end(form) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row padder-b">
+            <div class="row col-lg-12">
+                <div class="col-md-3 col-lg-3"></div>
+                <h4 class="col-md-9 col-lg-9">Contact us directly:</h4>
+            </div>
+            <div class="row col-lg-12">
+                <div class="col-md-3 col-lg-3"></div>
+                <h4 class="col-md-2 col-lg-2 padder-lr">Mail:</h4>
+                <a class="col-md-6 col-lg-6 padder-lr" href="mailto:lorem@ipsum.com">
+                    <h4 id="mail">lorem@ipsum.com</h4>
+                </a>
+            </div>
+            <div class="row col-lg-12">
+                <div class="col-md-3 col-lg-3"></div>
+                <h4 class="col-md-2 col-lg-2 padder-lr">Adress:</h4>
+                <h4 class="col-md-6 col-lg-6 padder-lr" id="adress">2 LoremIpsum Road, 67000 City - Country</h4>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

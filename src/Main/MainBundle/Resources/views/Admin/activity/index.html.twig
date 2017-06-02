@@ -1,0 +1,47 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+    <h1>Activities list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Dateactivity</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Picturesource</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for activity in activities %}
+            <tr>
+                <td><a href="{{ path('admin_activity_show', { 'id': activity.id }) }}">{{ activity.id }}</a></td>
+                <td>{{ activity.name }}</td>
+                <td>{% if activity.dateActivity %}{{ activity.dateActivity|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ activity.price }}</td>
+                <td>{{ activity.description }}</td>
+                <td>{{ activity.pictureSource }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_activity_show', { 'id': activity.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_activity_edit', { 'id': activity.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_activity_new') }}">Create a new activity</a>
+        </li>
+    </ul>
+{% endblock %}

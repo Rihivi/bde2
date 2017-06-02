@@ -1,0 +1,15 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+<div class="push"></div>
+
+<section class="Articles col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+    {% for article in articles %}
+    <div class="Article col-xs-3 col-sm-3 col-md-3 col-lg-3">
+        <h3>{{ article.name }}</h3>
+        <img class="imgArticle" src="{{asset(article.source)}}">
+        <a href="{{ path('website_article', {'id' : article.id})}}"><p class="DetArticle">Détails...</p></a>
+    </div>
+    {% endfor %}
+</section>
+{% endblock %}

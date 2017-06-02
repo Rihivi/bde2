@@ -1,0 +1,37 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+
+    <div class="container">
+
+        {% for evenement in evenements | slice(0,3)%}
+            <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+                <div class="EvenementIndex">
+                    <div>
+                        {% for media in evenement.media %}
+                            <div style="border: 2px black solid; text-align: center; margin: 10px;">
+                                <img class="imgAccueil" src="{{ asset(media.path) }}">
+                            </div>
+                        {% endfor %}
+                        {#<img class="imgAccueil" src="{{ asset(evenement.media.path) }}">#}
+                    </div>
+                    <p class="col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1"> {{ evenement.description }}</div>
+            </div>
+        {% endfor %}
+
+        <div class="ImagesIndex col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <div class="">
+                <img class="imgAccueil" src="{{ asset('image/cheval.png') }}">
+                <p>TITRE</p>
+            </div>
+            <div>
+                <img class="imgAccueil" src="{{ asset('image/foot.png') }}">
+                <p>TITRE</p>
+            </div>
+            <div>
+                <img class="imgAccueil" src="{{ asset('image/piscine.png') }}">
+                <p>TITRE</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

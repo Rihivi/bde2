@@ -1,0 +1,24 @@
+admin_products_index:
+    path:     /
+    defaults: { _controller: "MainBundle:ProductsAdmin:index" }
+    methods:  GET
+
+admin_products_show:
+    path:     /{id}/show
+    defaults: { _controller: "MainBundle:ProductsAdmin:show" }
+    methods:  GET
+
+admin_products_new:
+    path:     /new
+    defaults: { _controller: "MainBundle:ProductsAdmin:new" }
+    methods:  [GET, POST]
+
+admin_products_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MainBundle:ProductsAdmin:edit" }
+    methods:  [GET, POST]
+
+admin_products_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MainBundle:ProductsAdmin:delete" }
+    methods:  DELETE

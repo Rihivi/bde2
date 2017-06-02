@@ -1,0 +1,86 @@
+main_admin_products:
+    resource: "@MainBundle/Resources/config/routing/products.yml"
+    prefix:   /admin/products
+
+main_admin_activity:
+    resource: "@MainBundle/Resources/config/routing/activity.yml"
+    prefix:   /admin/activity
+
+main_homepage:
+    path:     /
+    defaults: { _controller: MainBundle:Default:index }
+
+contact:
+    path:     /contact
+    defaults: { _controller: MainBundle:Default:contact }
+    requirements:
+            _method:  GET|POST
+
+search:
+    path:     /search
+    defaults: { _controller: MainBundle:Search:searchTreat }
+
+
+website_boutique:
+    path:     /boutique
+    defaults: { _controller: MainBundle:Default:boutique }
+
+website_article:
+    path:     /boutique/{id}
+    defaults:
+      _controller: MainBundle:Default:article
+    requirements:
+      id: \d+
+
+website_inscription:
+    path:     /inscription
+    defaults: { _controller: MainBundle:Default:inscription }
+
+website_propositions:
+    path:     /propositions
+    defaults: { _controller: MainBundle:Default:propositions }
+
+website_panier:
+    path:     /panier
+    defaults: { _controller: MainBundle:Default:panier }
+
+website_evenementAll:
+    path:     /evenementAll
+    defaults: { _controller: MainBundle:Default:evenementAll }
+
+#website_detailEvenement:
+#    path:     /evenement/{id}
+#    defaults:
+#      _controller: MainBundle:Default:detailEvenement
+#    requirements:
+#      id: \d*
+
+website_NbPanier:
+    path:     /NbPanier
+    defaults: { _controller: MainBundle:Default:NbPanier }
+
+
+website_boutiqueAdmin:
+    path:     /admin/boutique
+    defaults: { _controller: MainBundle:Default:ArticleAdmin }
+
+website_descriptionProposition:
+    path:     /descriptionProposition/{id}
+    defaults:
+      _controller: MainBundle:Default:descriptionProposition
+    requirements:
+      id: \d+
+
+website_evenement:
+    path:     /evenement/{id}
+    defaults:
+      _controller: MainBundle:Default:evenement
+    requirements:
+      id: \d+
+
+website_AddImage:
+    path:     /AddImage/{id}
+    defaults:
+      _controller: MainBundle:Default:AddImage
+    requirements:
+      id: \d+

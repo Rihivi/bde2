@@ -1,0 +1,33 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+    {% set Like = proposition.LikeActivity %}
+    <div class="divIdee col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <div>
+            <h3>{{ proposition.Title }}</h3><br>
+            <p class="pIdee">{{ proposition.Description}}</p>
+        </div>
+        <div style="padding-top: 50px; height: 134px; width: 500px; margin-top: 50px;">
+            <div style="margin-left: 50px;">
+                <div>
+                    <button onclick="{% set like = Like+1 %}"><span>Like </span><i class="glyphicon glyphicon-thumbs-up"></i></button>
+                </div>
+                {{ Like }}
+                {#<div class="divIdee col-xs-6 col-sm-6 col-md-6 col-lg-6">#}
+                    {#<form action="{{ path("website_descriptionProposition", {'id' : proposition.id}) }}" method="post">#}
+                        {#{{ form_widget(form) }}#}
+                        {#<input type="submit" style="height: 6vh; margin-top: 1vh;"></input>#}
+                        {#{{ form_end(form) }}#}
+                    {#</form>#}
+                {#</div>#}
+                <br>
+                <div>
+                    <span>Proposez une date :</span>
+                    <input type="date" name="date">
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

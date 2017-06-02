@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}WebStage{% endblock %}</title>
+    <link rel="stylesheet" href=" {{ asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/font-awesome/css/font-awesome.min.css') }}" />
+</head>
+<body>
+<!----------- Header ------------>
+
+<header>
+
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+        <a href="{{ path('main_homepage')}}"><img src="{{ asset('image/Logo.png') }}" alt="Logo du BDE" style="width: 150px;"></a>
+    </div>
+    <h1 class="col-xs-4 col-sm-4 col-md-4 col-lg-4">BDE Strasbourg</h1>
+
+    <nav class="navigation col-xs-4 col-sm-4 col-md-4 col-lg-4"><ul></ul>
+        <a class="navlink" href="{{ path('website_evenementAll')}}"><button id="Evenement"> <h4> Evènement passés</h4></button></a>
+        <a class="navlink" href="{{ path('website_propositions')}}"><button id="idee"><h4> Inscription activités</h4></button></a>
+        <a class="navlink" href="{{ path('website_boutique')}}"><button id="market"><h4> Boutique </h4></button></a>
+    </nav>
+
+    <div class="bouton col-xs-4 col-sm-4 col-md-4 col-lg-2>">
+        <div>
+            <div id="Contact"><a href="{{ path('fos_user_security_login') }}"><button id="login">Connexion</button></a></div>
+            <div id="Contact"><a href="{{ path('contact') }}"><button id="rose">Contact</button></a></div>
+        </div>
+        <div id="Inscription"><a href="{{ path('fos_user_registration_register')}}"><button id="register">Inscription</button></a>
+            {% render(controller('MainBundle:Default:NbPanier')) %}
+        </div>
+    </div>
+</header>
+<div class="push"></div>
+
+{% block body %}{% endblock %}
+
+<!----------- Footer ------------>
+<footer class="footer navbar-fixed-bottom">
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Tous droits réservé - BDE Strasbourg &copy 2017</div>
+    <a href="link" class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><p id="Mentions">Mentions légales</p></a>
+</footer>
+<script src="{{ asset ('js/jquery.js') }}"></script>
+<script src="{{ asset ('js/bootstrap.js') }}"></script>
+{% block javascripts %}{% endblock %}
+</body>
+</html>

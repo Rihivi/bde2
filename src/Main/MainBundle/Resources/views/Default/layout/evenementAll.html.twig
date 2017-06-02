@@ -1,0 +1,29 @@
+{% extends "::layout/layout.html.twig" %}
+{% block body %}
+    <div class="container white col-lg-12 padder-t2 DivTitre">
+        <h2 class="LigneTitre Titre"><span class="LigneSpan">Action réalisé</span></h2>
+    </div>
+    {% for activity in activitys %}
+        <section class="col-lg-4 ActionRealise">
+            <div class="pastAction">
+                {% for media in activity.media %}
+                    <div style="border: 2px black solid; text-align: center; margin: 10px;">
+                        <img class="pastActionImg" src="{{ asset(media.path) }}">
+                    </div>
+                {% endfor %}
+                {#<img  class ="pastActionImg" src="{{ asset(activity.media.path) }}">#}
+                <h4 class="TitreAction">{{ activity.name[:50] }}</h4>
+                {#<p class="DateAction">{{ action.dateDebut| date() }}</p>#}
+                {#<p class="DescriptionAction">{{ action.description[:150] }}...</p>#}
+                <div class="text{{ loop.index }}">
+                    <a href="{{ path('website_evenement', {'id' : activity.id})}}"><p class="Titre LigneTitre LirePlusAction" style=" text-align: center; padding: 10px;">Lire plus</p></a>
+                </div>
+                {#<p>{{ action.dateFin| date() }}</p>#}
+                {#<p>{{ action.cout }}</p>#}
+                {#<p>{{ action.recolte }}</p>#}
+                {#<p>{{ action.type }}</p>#}
+            </div>
+        </section>
+
+    {% endfor %}
+{% endblock %}
